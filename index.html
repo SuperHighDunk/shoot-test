@@ -87,6 +87,25 @@ p {
   	<!-- EXTRASOURCES -->
 	<!-- Loads the Javascript code...-->
   	<script src="src/Runtime.js"></script>
+  <script>
+    /*
+     * Called by the Fusion 2.5 HTML5 Object.
+     * Sends a test score from the Fusion game page
+     * to the Wix HTML component that contains this game.
+     */
+    function sendTestScore() {
+        window.parent.postMessage(
+            {
+                type: "TEST_SCORE",
+                score: 777
+            },
+            "*"
+        );
+
+        console.log("TEST SCORE SENT TO WIX:", 777);
+    }
+  </script>
+
   	
   <script>
 
