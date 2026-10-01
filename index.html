@@ -91,15 +91,18 @@ p {
 	
 <script>
 function sendTestScore(score) {
+    console.log("RAW SCORE FROM FUSION:", score);
+    console.log("RAW SCORE TYPE:", typeof score);
+
     window.parent.postMessage(
         {
             type: "TEST_SCORE",
-            score: Number(score)
+            score: score
         },
         "*"
     );
 
-    console.log("TEST SCORE SENT TO WIX:", Number(score));
+    console.log("TEST SCORE SENT TO WIX:", score);
 }
 </script>
 
