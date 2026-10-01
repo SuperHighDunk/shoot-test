@@ -90,16 +90,16 @@ p {
   	
 	
 <script>
-function sendTestScore() {
+function sendTestScore(score) {
     window.parent.postMessage(
         {
             type: "TEST_SCORE",
-                                  score: 1000
+            score: Number(score)
         },
         "*"
     );
 
-    console.log("TEST SCORE SENT TO WIX:", 1000);
+    console.log("TEST SCORE SENT TO WIX:", Number(score));
 }
 </script>
 
