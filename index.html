@@ -54,35 +54,45 @@
 
     <title>Super High Dunk - SCORE TEST</title>
 
-
     <script src="src/Runtime.js"></script>
-
 
     <script>
 
-        function sendTestScore(score)
+        function sendTestScore()
         {
             console.log(
-                "RAW SCORE FROM FUSION:",
-                score
+                "=== FUSION JAVASCRIPT TEST ==="
             );
 
             console.log(
-                "RAW SCORE TYPE:",
-                typeof score
+                "NUMBER OF ARGUMENTS:",
+                arguments.length
             );
 
-            window.parent.postMessage(
-                {
-                    type: "TEST_SCORE",
-                    score: score
-                },
-                "*"
+            for (
+                let i = 0;
+                i < arguments.length;
+                i++
+            )
+            {
+                console.log(
+                    "ARGUMENT " + i + ":",
+                    arguments[i]
+                );
+
+                console.log(
+                    "ARGUMENT " + i + " TYPE:",
+                    typeof arguments[i]
+                );
+            }
+
+            console.log(
+                "ALL ARGUMENTS:",
+                arguments
             );
 
             console.log(
-                "TEST SCORE SENT TO WIX:",
-                score
+                "=== END FUSION TEST ==="
             );
         }
 
