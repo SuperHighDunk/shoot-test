@@ -1,236 +1,100 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
 
-<style type="text/css">
+    <style>
 
-html {
-    height: 100%;
-}
+        html {
+            height: 100%;
+        }
 
-body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
-    min-height: 100%;
-    margin: 0;
+        body {
+            height: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
 
-    background: rgb(238,238,238);
+        #wrapper {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    background: -moz-linear-gradient(
-        top,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+        #canvas {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    background: -webkit-linear-gradient(
-        top,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+        #MMFCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
 
-    background: -webkit-linear-gradient(
-        top,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+    </style>
 
-    background: -o-linear-gradient(
-        top,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+    <title>Super High Dunk - SCORE TEST</title>
 
-    background: -ms-linear-gradient(
-        top,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+    <script src="src/Runtime.js"></script>
 
-    background: linear-gradient(
-        to bottom,
-        rgba(238,238,238,1) 0%,
-        rgba(204,204,204,1) 100%
-    );
+    <script>
 
-    filter: progid:DXImageTransform.Microsoft.gradient(
-        startColorstr='#eeeeee',
-        endColorstr='#cccccc',
-        GradientType=0
-    );
-}
+        /*
+         * FUSION SCORE FUNCTION
+         *
+         * Fusion's HTML5 Object calls this function.
+         * The Integer Parameter added in Fusion
+         * supplies the score value.
+         */
 
-h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #962300;
-    font-size: 25px;
-}
+        function sendTestScore(score)
+        {
+            console.log(
+                "RAW SCORE FROM FUSION:",
+                score
+            );
 
-p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #777;
-    font-size: 12px;
-}
+            console.log(
+                "RAW SCORE TYPE:",
+                typeof score
+            );
 
-#bloctxt {
-    border-left-width: 5px;
-    border-left-style: solid;
-    border-left-color: #962300;
-    padding-left: 10px;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    width: 600px;
-    margin-left: -260px;
-}
+            window.parent.postMessage(
+                {
+                    type: "TEST_SCORE",
+                    score: score
+                },
+                "*"
+            );
 
-#wrapper {
-    padding: 10px;
-    margin: 0 auto;
-}
+            console.log(
+                "TEST SCORE SENT TO WIX:",
+                score
+            );
+        }
 
-#border {
-    background-color: #99C;
-    border: 1px solid #B90000;
-
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-
-    margin: 0 auto;
-    padding: 5px;
-
-    width: 640px;
-    height: 480px;
-}
-
-#canvas {
-    width: 640px;
-    height: 480px;
-}
-
-#MMFCanvas {
-    -webkit-box-shadow:
-        0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    box-shadow:
-        0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-</style>
-
-<title>Clickteam Fusion 2.5 HTML5 Runtime</title>
-
-
-<script>
-
-    // Detection of old browsers that do not support the canvas element
-
-    if (!document.createElement("canvas").getContext)
-    {
-        window.open(
-            "http://www.clickteam.com/html5-fallback",
-            "_self"
-        );
-    }
-
-</script>
-
-
-<!-- Loads the Clickteam Fusion Runtime -->
-
-<script src="src/Runtime.js"></script>
-
-
-<!-- SUPER HIGH DUNK SCORE BRIDGE -->
-
-<script>
-
-    function sendTestScore(score)
-    {
-        console.log(
-            "RAW SCORE FROM FUSION:",
-            score
-        );
-
-        console.log(
-            "RAW SCORE TYPE:",
-            typeof score
-        );
-
-        window.parent.postMessage(
-            {
-                type: "TEST_SCORE",
-                score: score
-            },
-            "*"
-        );
-
-        console.log(
-            "TEST SCORE SENT TO WIX:",
-            score
-        );
-    }
-
-</script>
-
-
-<script>
-
-    // Detects if the html file is ran locally.
-
-    if (window.location.protocol == "file:")
-    {
-        document.write(
-            '<div id="bloctxt">'
-        );
-
-        document.write(
-            '<h1>The application cannot be run...</h1>'
-        );
-
-        document.write(
-            '<p>HTML browsers do not allow you to launch data files directly from the file system.<br>'
-        );
-
-        document.write(
-            'A drag & drop of the html file on a web-browser window will not work, on any machine.<br>'
-        );
-
-        document.write(
-            'Please use the Build & Run option (it opens a local web server) to run your application,<br>'
-        );
-
-        document.write(
-            'or upload your application folder to a remote web-server, and start it from there...</p>'
-        );
-
-        document.write(
-            '</div>'
-        );
-
-        throw new error(
-            "Cannot run application"
-        );
-    }
-
-</script>
+    </script>
 
 </head>
 
 
 <body>
 
-
-<div id="wrapper">
-
-    <div id="border">
+    <div id="wrapper">
 
         <div id="canvas">
 
@@ -239,52 +103,34 @@ p {
                 width="640"
                 height="480"
             >
-
                 <p>
                     Your browser does not support Canvas.
                 </p>
-
             </canvas>
 
         </div>
 
     </div>
 
-</div>
 
+    <script>
 
-<script>
-
-    // RUNTIMESTART
-
-    // This is where the HTML5 runtime is actually started
-
-    window.addEventListener(
-        "load",
-        windowLoaded,
-        false
-    );
-
-
-    function windowLoaded()
-    {
-        // Calls the runtime
-
-        new Runtime(
-            "MMFCanvas",
-            "resources/SHOOT TEST.cch"
+        window.addEventListener(
+            "load",
+            windowLoaded,
+            false
         );
-    }
-
-    // RUNTIMESTARTEND
-
-</script>
 
 
-<p align="center">
-    Clickteam Fusion 2.5 HTML5 template.
-</p>
+        function windowLoaded()
+        {
+            new Runtime(
+                "MMFCanvas",
+                "resources/SHOOT TEST.cch"
+            );
+        }
 
+    </script>
 
 </body>
 
