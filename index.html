@@ -17,49 +17,48 @@
         }
 
         body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             height: 100%;
             min-height: 100%;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: #000;
+            background: rgb(238,238,238);
         }
 
         #wrapper {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        #border {
+            background-color: #99C;
+            border: 1px solid #B90000;
+            border-radius: 7px;
+            margin: 0 auto;
+            padding: 5px;
+            width: 640px;
+            height: 480px;
         }
 
         #canvas {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
+            width: 640px;
+            height: 480px;
         }
 
         #MMFCanvas {
-            width: 100%;
-            height: 100%;
-            display: block;
+            width: 640px;
+            height: 480px;
         }
 
     </style>
 
     <title>Super High Dunk - SCORE TEST</title>
 
+
     <script src="src/Runtime.js"></script>
 
-    <script>
 
-        /*
-         * FUSION SCORE FUNCTION
-         *
-         * Fusion's HTML5 Object calls this function.
-         * The Integer Parameter added in Fusion
-         * supplies the score value.
-         */
+    <script>
 
         function sendTestScore(score)
         {
@@ -96,17 +95,21 @@
 
     <div id="wrapper">
 
-        <div id="canvas">
+        <div id="border">
 
-            <canvas
-                id="MMFCanvas"
-                width="640"
-                height="480"
-            >
-                <p>
-                    Your browser does not support Canvas.
-                </p>
-            </canvas>
+            <div id="canvas">
+
+                <canvas
+                    id="MMFCanvas"
+                    width="640"
+                    height="480"
+                >
+                    <p>
+                        Your browser does not support Canvas.
+                    </p>
+                </canvas>
+
+            </div>
 
         </div>
 
