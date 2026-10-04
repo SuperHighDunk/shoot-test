@@ -34,21 +34,8 @@
 
     <script>
 
-        /*
-         * GLOBAL SCORE STORAGE
-         *
-         * Fusion can call sendTestScore()
-         * without needing to pass an argument.
-         *
-         * Later, we can replace this test value
-         * with the actual Fusion score.
-         */
         window.SHD_TEST_SCORE = 1701;
 
-
-        /*
-         * FUSION CALL
-         */
         function sendTestScore()
         {
             console.log("=== FUSION JAVASCRIPT TEST ===");
@@ -68,18 +55,22 @@
                 arguments.length
             );
 
-            console.log(
-                "=== END FUSION TEST ==="
-            );
+            for (let i = 0; i < arguments.length; i++)
+            {
+                console.log(
+                    "ARGUMENT " + i + ":",
+                    arguments[i]
+                );
+
+                console.log(
+                    "ARGUMENT " + i + " TYPE:",
+                    typeof arguments[i]
+                );
+            }
+
+            console.log("=== END FUSION TEST ===");
         }
 
-
-        /*
-         * TEST FUNCTION
-         *
-         * We can use this later to change
-         * the stored score from Fusion.
-         */
         function setSHDTestScore(value)
         {
             window.SHD_TEST_SCORE = Number(value);
@@ -95,9 +86,19 @@
     <script src="src/Runtime.js"></script>
 
     <script>
-        new Runtime(
+        /*
+         * Keep a reference to the actual Fusion runtime.
+         * This lets us inspect its internal objects from
+         * Chrome DevTools.
+         */
+        window.SHD_RUNTIME = new Runtime(
             "MMFCanvas",
             "resources/SHOOT TEST.cch"
+        );
+
+        console.log(
+            "SHD FUSION RUNTIME:",
+            window.SHD_RUNTIME
         );
     </script>
 
