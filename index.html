@@ -38,7 +38,7 @@
 
 <script>
 
-function sendTestScore()
+window.sendTestScore = function()
 {
     var score = Number(window.SHD_TEST_SCORE);
 
@@ -62,7 +62,7 @@ function sendTestScore()
 
     console.log("SCORE SENT TO PARENT:", score);
     console.log("=== END SCORE SEND ===");
-}
+};
 
 </script>
 
@@ -72,7 +72,7 @@ function sendTestScore()
 
 new Runtime(
     "MMFCanvas",
-    resources/SHOOT TEST.cch
+    "resources/SHOOT TEST.cch"
 );
 
 </script>
