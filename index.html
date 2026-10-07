@@ -70,10 +70,17 @@ window.sendTestScore = function()
 
 <script>
 
-new Runtime(
-    "MMFCanvas",
-    "resources/SHD HTML5 TEST.cch"
-);
+function windowLoaded()
+{
+    console.log("=== FUSION RUNTIME STARTING AFTER PAGE LOAD ===");
+
+    new Runtime(
+        "MMFCanvas",
+        "resources/SHD HTML5 TEST.cch"
+    );
+}
+
+window.addEventListener("load", windowLoaded, false);
 
 </script>
 
